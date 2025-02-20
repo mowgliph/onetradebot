@@ -3,7 +3,7 @@ import { TELEGRAM_BOT_TOKEN } from "./config/env.js";
 
 const TOKEN = TELEGRAM_BOT_TOKEN;
 
-const bot = new TelegramBot(TOKEN);
+const bot = new TelegramBot(TOKEN, {polling: true});
 
 bot.onText(/\/start/, (msg) => {
     bot.sendMessage(msg.chat.id, 
