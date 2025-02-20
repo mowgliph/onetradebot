@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "type": "module",
   "description": "OneTradeBot es un bot de Telegram diseñado para interactuar con la API de CoinEx y realizar diversas acciones de trading directamente desde Telegram.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "npx nodemon app.js",
