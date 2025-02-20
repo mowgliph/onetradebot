@@ -1,0 +1,1 @@
+// Comando /c para obtener gráficas
