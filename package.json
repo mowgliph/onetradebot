@@ -1,0 +1,31 @@
+{
+  "name": "onetradebot",
+  "version": "1.0.1",
+  "type": "module",
+  "description": "OneTradeBot es un bot de Telegram diseñado para interactuar con la API de CoinEx y realizar diversas acciones de trading directamente desde Telegram.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mowgliph/onetradebot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mowgliph/onetradebot/issues"
+  },
+  "homepage": "https://github.com/mowgliph/onetradebot#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.7",
+    "nodemon": "^3.1.9"
+  }
+}
