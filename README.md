@@ -77,6 +77,8 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE
 ## 📢 Contribuciones
 Si deseas colaborar con el desarrollo de OneTradeBot, ¡las Pull Requests son bienvenidas! No dudes en abrir un issue si encuentras errores o tienes sugerencias para mejorar el bot.
 
-💡 Proyecto en desarrollo por [mowgliph](https://github.com/mowgliph)
+***
+
+> 💡 Proyecto en desarrollo por [mowgliph](https://github.com/mowgliph)
 
 
