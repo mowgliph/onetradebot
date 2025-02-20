@@ -7,7 +7,7 @@ const bot = new TelegramBot(TOKEN, {polling: true});
 
 bot.onText(/\/start/, (msg) => {
     bot.sendMessage(msg.chat.id, 
-        `🤖 ¡Hola ${msg.from.first_name}! Bienvenido a OneTradeBot. 🚀`
+        `🤖 ¡Hola ${msg.from.first_name}!\n\nBienvenido a OneTradeBot. 🚀`
     );
 });
 
