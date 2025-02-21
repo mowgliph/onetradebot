@@ -49,7 +49,7 @@ bot.on('message', async (msg) => {
     const userId = msg.from.id;
 
     if (msg.text.startsWith('/')) {
-        const isSubscribed = await checkSubscription(userId, TELEGRAM_CHANNEL_ID);
+        const isSubscribed = await isUserSubscribed(userId, TELEGRAM_CHANNEL_ID);
 
         if (!isSubscribed) {
             bot.sendMessage(chatId, `⚠️ Necesitas estar suscrito al canal antes de usar los comandos: [OneTradeBot Channel](https://t.me/onetradebot_channel)`, {
