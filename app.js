@@ -1,16 +1,28 @@
 import TelegramBot from 'node-telegram-bot-api';
-import { TELEGRAM_BOT_TOKEN } from "./config/env.js";
+import { TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL_ID } from "./config/env.js";
 import { handlePrice } from "./commands/price.js";
 import { handleBalance } from "./commands/balance.js";
+import { isUserSubscribed } from "./middlewares/checkSubscription.js";
 
 const TOKEN = TELEGRAM_BOT_TOKEN;
 const bot = new TelegramBot(TOKEN, {polling: true});
 
-
 // Message Start
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
+    const userId = msg.from.id;
     const name = msg.from.first_name || "Trader";
+
+    const isSubscribed = await isUserSubscribed(userId, TELEGRAM_CHANNEL_ID);
+
+    if (!isSubscribed){
+        bot.sendMessage(chatId, 
+            `🚨 Para usar el bot, debes unirte al canal oficial: [OneTradeBot Channel](https://t.me/onetradebot_channel)`, {
+            parse_mode: "Markdown",
+            disable_web_page_preview: true
+        });
+        return;
+    }
 
     const welcomeMessage = `
 🤖 ¡Hola, ${name}! Bienvenido a **OneTradeBot** 🚀  
@@ -31,10 +43,40 @@ OneTradeBot es un asistente automatizado que permite realizar operaciones de tra
     bot.sendMessage(chatId, welcomeMessage, { parse_mode: "Markdown" });
 });
 
+// Intercept all msg
+bot.on('message', async (msg) => {
+    const chatId = msg.chat.id;
+    const userId = msg.from.id;
+
+    if (msg.text.startsWith('/')) {
+        const isSubscribed = await checkSubscription(userId, TELEGRAM_CHANNEL_ID);
+
+        if (!isSubscribed) {
+            bot.sendMessage(chatId, `⚠️ Necesitas estar suscrito al canal antes de usar los comandos: [OneTradeBot Channel](https://t.me/onetradebot_channel)`, {
+                parse_mode: "Markdown",
+                disable_web_page_preview: true
+            });
+            return;
+        }
+    }
+});
+
 
 // Message Help
-bot.onText(/\/help/, (msg) => {
+bot.onText(/\/help/, async (msg) => {
     const chatId = msg.chat.id;
+    const userId = msg.from.id;
+
+    const isSubscribed = await isUserSubscribed(userId, TELEGRAM_CHANNEL_ID);
+
+    if (!isSubscribed){
+        bot.sendMessage(chatId, 
+            `🚨 Para usar el bot, debes unirte al canal oficial: [OneTradeBot Channel](https://t.me/onetradebot_channel)`, {
+            parse_mode: "Markdown",
+            disable_web_page_preview: true
+        });
+        return;
+    }
 
     const helpMessage = `
 📌 **OneTradeBot - Guía de Uso**  
