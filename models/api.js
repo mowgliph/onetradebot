@@ -1,13 +1,13 @@
 // Funciones para interactuar con CoinEx
 import crypto from "crypto";
 import fetch from "node-fetch";
-import { COINEX_ACCESS_ID, COINEX_API_SECRET } from "../config/env.js";
+import { COINEX_ACCESS_ID, COINEX_SECRET_KEY } from "../config/env.js";
 
 
 // 🔑 Configuración de la API
 const API_URL = "https://api.coinex.com/v2";
 const ACCESS_ID = COINEX_ACCESS_ID;
-const API_SECRET = COINEX_API_SECRET;
+const API_SECRET = COINEX_SECRET_KEY;
 
 // 📌 Función para generar la firma de autenticación
 function signParams(params) {
